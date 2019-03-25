@@ -15,6 +15,7 @@ function Validation(props) {
             setCounterState( prevState => {
                 return {
                     ...prevState,
+                    counter: props.counter,
                     styling: 'alert-danger',
                     message: 'Text too short !'
                 }
@@ -23,6 +24,7 @@ function Validation(props) {
             setCounterState(prevState => {
                 return {
                     ...prevState,
+                    counter: props.counter,
                     styling: 'alert-warning',
                     message: 'Text long enough !'
                 }
@@ -31,6 +33,7 @@ function Validation(props) {
             setCounterState( prevState => {
                 return {
                     ...prevState,
+                    counter: props.counter,
                     styling: 'alert-danger',
                     message: 'It\'s empty !'
                 }
@@ -39,6 +42,7 @@ function Validation(props) {
             setCounterState( prevState => {
                 return {
                     ...prevState,
+                    counter: props.counter,
                     styling: 'alert-success',
                     message: 'Nothing to signals.'
                 }
