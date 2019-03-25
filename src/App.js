@@ -1,28 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Validation from './components/validation.components';
+import Character from './components/character.components';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+function App() {
+
+  let initialValue = '';
+
+  const [textState, changeTextState] = useState({
+    input: initialValue,
+    counter: initialValue.length
+  });
+
+  const counterInput = (event) => {
+    changeTextState({
+      input: event.target.value,
+      counter: event.target.value.length
+    });
+  };
+
+  return (
+    <section className="container">
+      <div className="form-group">
+        <label htmlFor="entry">Entry :</label>
+        <input id="entry" type="text"
+                className="form-control bg-secondary"
+              defaultValue={textState.input}
+              onChange={ (e) => counterInput(e) } />
       </div>
-    );
-  }
+      <Validation counter={textState.counter} min="3" max="5" />
+      <Character input={textState.input} />
+    </section>
+  )
 }
 
 export default App;
