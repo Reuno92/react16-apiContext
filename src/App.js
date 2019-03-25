@@ -3,19 +3,23 @@ import './App.css';
 import Validation from './components/validation.components';
 import Character from './components/character.components';
 
-function App() {
+function App(props) {
 
   let initialValue = '';
+  var newString = React.createRef();
 
-  const [textState, changeTextState] = useState({
+  const [textState, setTextState] = useState({
     input: initialValue,
     counter: initialValue.length
   });
 
   const counterInput = (event) => {
-    changeTextState({
-      input: event.target.value,
-      counter: event.target.value.length
+    setTextState( prevState => {
+      return {
+        ...prevState,
+        input: event.target.value,
+        counter: event.target.value.length
+      }
     });
   };
 
@@ -29,7 +33,7 @@ function App() {
               onChange={ (e) => counterInput(e) } />
       </div>
       <Validation counter={textState.counter} min="3" max="5" />
-      <Character input={textState.input} />
+      <Character input={textState.input} ref={ newString } />
     </section>
   )
 }

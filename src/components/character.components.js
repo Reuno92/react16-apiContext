@@ -28,6 +28,9 @@ function Character(props) {
 
     const deleteLetter = (index) => {
         characterState.letters.splice(index, 1);
+        const REBUILD_STRING = characterState.letters.join("");
+
+        console.log(REBUILD_STRING);
 
         setCharacterState({
             input: props.input,

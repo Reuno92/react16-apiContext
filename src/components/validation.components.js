@@ -12,36 +12,36 @@ function Validation(props) {
 
     useEffect(() => {
         if (counterState.counter > 0 && counterState.counter < counterState.min) {
-            setCounterState({
-                counter: props.counter,
-                min: props.min,
-                max: props.max,
-                styling: 'alert-danger',
-                message: 'Text too short !'
+            setCounterState( prevState => {
+                return {
+                    ...prevState,
+                    styling: 'alert-danger',
+                    message: 'Text too short !'
+                }
             });
         }  else if (counterState.counter > counterState.max) {
-            setCounterState({
-                counter: props.counter,
-                min: props.min,
-                max: props.max,
-                styling: 'alert-warning',
-                message: 'Text long enough !'
+            setCounterState(prevState => {
+                return {
+                    ...prevState,
+                    styling: 'alert-warning',
+                    message: 'Text long enough !'
+                }
             });
         } else if (counterState.counter === 0) {
-            setCounterState({
-                counter: props.counter,
-                min: props.min,
-                max: props.max,
-                styling: 'alert-danger',
-                message: 'It\'s empty !'
+            setCounterState( prevState => {
+                return {
+                    ...prevState,
+                    styling: 'alert-danger',
+                    message: 'It\'s empty !'
+                }
             });
         } else {
-            setCounterState({
-                counter: props.counter,
-                min: props.min,
-                max: props.max,
-                styling: 'alert-success',
-                message: 'Nothing to signals.'
+            setCounterState( prevState => {
+                return {
+                    ...prevState,
+                    styling: 'alert-success',
+                    message: 'Nothing to signals.'
+                }
             });
         }
     }, [props.counter]);
